@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import { styles } from "../style";
 import { ComputersCanvas } from "./canvas";
 import { motion } from "framer-motion";
@@ -29,7 +28,7 @@ const Hero = () => {
 
 
         <div className='absolute xl:bottom-32 bottom-24  w-full flex justify-center items-center'>
-        <Link to='#about'>
+        <a href='#about'>
           <div className='w-[35px] h-[64px] rounded-3xl border-4 border-secondary flex justify-center items-start p-2'>
             <motion.div
               animate={{
@@ -43,7 +42,7 @@ const Hero = () => {
               className='w-3 h-3 rounded-full bg-secondary mb-1'
             />
           </div>
-        </Link>
+        </a>
       </div>
 			</section>
 		</>
