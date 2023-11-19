@@ -9,11 +9,15 @@ import Feedbacks from "./components/Feedbacks";
 import Contact from "./components/Contact";
 import { StarsCanvas } from "./components/canvas";
 import * as $ from "jquery";
+import { useEffect } from "react";
 
 const App = () => {
-	$("canvas").on("webglcontextlost", (e) => {
-		e.preventDefault();
+	useEffect(() => {
+		$("canvas").on("webglcontextlost", (e) => {
+			e.preventDefault();
+		});
 	});
+
 	return (
 		<>
 			<BrowserRouter>
