@@ -1,3 +1,4 @@
+/* eslint-disable react-refresh/only-export-components */
 import { useState, useRef } from "react";
 import { motion } from "framer-motion";
 import emailjs from "@emailjs/browser";
@@ -15,50 +16,52 @@ const Contact = () => {
 	});
 	const [loading, setLoading] = useState(false);
 	const handleChange = (e) => {
-    const { target } = e;
-    const { name, value } = target;
+		const { target } = e;
+		const { name, value } = target;
 
-    setForm({
-      ...form,
-      [name]: value,
-    });
-  };
+		setForm({
+			...form,
+			[name]: value,
+		});
+	};
 	const handleSubmit = (e) => {
-    e.preventDefault();
-    setLoading(true);
+		e.preventDefault();
+		setLoading(true);
+		console.log();
+		emailjs
+			.send(
+				// service_vmh56wm
+				// template_uw3j53m
+				"service_vmh56wm",
+				"template_uw3j53m",
+				{
+					from_name: form.name,
+					to_name: "Mohamed Hegazy",
+					from_email: form.email,
+					to_email: "mohamedhegazy219427@gmail.com",
+					message: form.message,
+				},
+				'NLQpYVgaRjO8d2gyQ'
+			)
+			.then(
+				() => {
+					setLoading(false);
+					alert("Thank you. I will get back to you as soon as possible.");
 
-    emailjs
-      .send(
-        import.meta.env.VITE_APP_EMAILJS_SERVICE_ID,
-        import.meta.env.VITE_APP_EMAILJS_TEMPLATE_ID,
-        {
-          from_name: form.name,
-          to_name: "Mohamed Hegazy",
-          from_email: form.email,
-          to_email: "mohamedhegazy219427@gmail.com",
-          message: form.message,
-        },
-        import.meta.env.VITE_APP_EMAILJS_PUBLIC_KEY
-      )
-      .then(
-        () => {
-          setLoading(false);
-          alert("Thank you. I will get back to you as soon as possible.");
+					setForm({
+						name: "",
+						email: "",
+						message: "",
+					});
+				},
+				(error) => {
+					setLoading(false);
+					console.error(error);
 
-          setForm({
-            name: "",
-            email: "",
-            message: "",
-          });
-        },
-        (error) => {
-          setLoading(false);
-          console.error(error);
-
-          alert("Ahh, something went wrong. Please try again.");
-        }
-      );
-  };
+					alert("Ahh, something went wrong. Please try again.");
+				}
+			);
+	};
 	return (
 		<>
 			<div className="xl:mt-12 xl:flex-row flex-col-reverse flex gap-10 overflow-hidden">

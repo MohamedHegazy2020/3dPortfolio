@@ -8,8 +8,12 @@ import Works from "./components/Works";
 import Feedbacks from "./components/Feedbacks";
 import Contact from "./components/Contact";
 import { StarsCanvas } from "./components/canvas";
+import * as $ from "jquery";
 
 const App = () => {
+	$("canvas").on("webglcontextlost", (e) => {
+		e.preventDefault();
+	});
 	return (
 		<>
 			<BrowserRouter>
@@ -21,7 +25,7 @@ const App = () => {
 					<About />
 					<Experience />
 					<Tech />
-					<Works /> 
+					<Works />
 					<Feedbacks />
 					<div className="relative z-0">
 						<Contact />

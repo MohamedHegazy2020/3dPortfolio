@@ -42,7 +42,6 @@ const ComputersCanvas = () => {
 		const mediaQuery = window.matchMedia("(max-width:580px)");
 
 		setIsMobile(mediaQuery.matches);
-		console.log(mediaQuery);
 
 		const handleMediaQueryChange = (event) => {
 			setIsMobile(event.matches);
@@ -56,6 +55,7 @@ const ComputersCanvas = () => {
 	return (
 		<>
 			<Canvas
+			
 				frameloop="demand"
 				shadows
 				camera={{ position: [20, 3, 5], fav: 25 }}
